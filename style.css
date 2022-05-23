@@ -14,11 +14,13 @@ header {
     color: white;
     background-color: rgb(247, 34, 16);
     width: 70%;
+    min-width: 380px;
     margin: 0 auto;
 }
 nav {
     background-color: white;
     width: 70%;
+    min-width: 380px;
     margin: 0 auto;
 }
 .clear {
@@ -61,6 +63,7 @@ article {
     background-color: white;
     width: 70%;
     margin: 0 auto;
+    min-width: 380px;
 }
 .row {
     border-top: 1px solid rgb(217, 217, 217);
@@ -88,6 +91,7 @@ footer {
     width: 70%;
     height: 90px;
     margin: 5px auto 0px auto;
+    min-width: 380px;
 }
 .footer_style {
     padding-top: 45px;
