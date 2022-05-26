@@ -15,9 +15,20 @@ a {
     color: black;
 }
 a:hover {
-    color: black;
     text-decoration: underline;
+    color: black;
 }
 img {
     width: 100%;
+}
+.label {
+    background-color: red;
+    width: 70px;
+}
+.subtitle {
+    background-color: red;
+    width: 75px;
+}
+.first-letter {
+    font-size: 30px;
 }
