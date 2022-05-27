@@ -32,3 +32,12 @@ img {
 .first-letter {
     font-size: 30px;
 }
+form {
+    border: 5px solid red;
+    border-radius: 20px;
+}
+button {
+    padding: 5px;
+    border-radius: 10px;
+    border: 2px solid red;
+}
