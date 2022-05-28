@@ -66,33 +66,34 @@
                 <div class="col d-flex justify-content-center m-4">
                     <form action="./skripta.php" method="post" class="p-4 bg-white">
                         <div class="form-item">
-                            <label for="title">Naslov vijesti</label>
+                            <label>Naslov vijesti</label>
                             <div class="form-field">
                                 <input type="text" name="title" class="form-field-textual" required>
                             </div>
                         </div>
                         <div class="form-item">
-                            <label for="about">Kratki sadržaj vijesti (do 50 znakova)</label>
+                            <label>Kratki sadržaj vijesti (do 50 znakova)</label>
                             <div class="form-field">
-                                <textarea name="about" id="" cols="30" rows="8" required></textarea>
+                                <textarea name="about" cols="30" rows="8" required></textarea>
                             </div>
                         </div>
                         <div class="form-item">
-                            <label for="content">Sadržaj vijesti</label>
+                            <label>Sadržaj vijesti</label>
                             <div class="form-field">
-                                <textarea name="content" id="" cols="30" rows="8" class="form-field-textual" required></textarea>
+                                <textarea name="content" cols="30" rows="8" class="form-field-textual" required></textarea>
                             </div>
                         </div>
                         <div class="form-item">
-                            <label for="slika">Slika:</label>
+                            <label>Slika:</label>
                             <div class="form-field">
-                                <input type="file" src="" alt="" name="slika" required>
+                                <input type="file" name="slika" required>
                             </div>
                         </div>
                         <div class="form-item">
-                            <label for="category">Kategorija vijesti</label>
+                            <label>Kategorija vijesti</label>
                             <div class="form-field">
-                                <select name="category" id="" class="form-field-textual" required>
+                                <select name="category" class="form-field-textual" required>
+                                    <option value="">Odabir kategorije</option>
                                     <option value="U.S.">U.S.</option>
                                     <option value="World">World</option>
                                     <option value="Politics">Politics</option>
@@ -101,12 +102,10 @@
                             </div>
                         </div>
                         <div class="form-item">
-                            <label>
-                                Spremiti u arhivu:
-                                <div class="form-field">
-                                    <input type="checkbox" name="archive" required>
-                                </div>
-                            </label>
+                            <label>Spremiti u arhivu:</label>
+                            <div class="form-field">
+                                <input type="checkbox" name="archive" required>
+                            </div>
                         </div>
                         <div class="form-item">
                             <button type="reset" value="Poništi" class="bg-white">Poništi</button>
