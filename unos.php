@@ -52,7 +52,7 @@
                 </a>
             </div>
             <div class="col-xxl-3 col-xl-12 col-lg-12 col-md-12 col-sm-12 fs-5 fw-bold">
-                <a href="./unos.html">
+                <a href="./unos.php">
                     <div class="m-2">
                         Unos
                     </div>
@@ -64,11 +64,18 @@
         <div class="container text-center">
             <div class="row">
                 <div class="col d-flex justify-content-center m-4">
-                    <form action="./skripta.php" method="post" class="p-4 bg-white">
+                    <!-- action="./skripta.php" -->
+                        <form method="post" class="p-4 bg-white"> 
                         <div class="form-item">
                             <label>Naslov vijesti</label>
                             <div class="form-field">
                                 <input type="text" name="title" class="form-field-textual" required>
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <label>Datum objave</label>
+                            <div class="form-field">
+                                <input type="date" name="date" id="date" required>
                             </div>
                         </div>
                         <div class="form-item">
@@ -125,5 +132,45 @@
             </div>
         </div>
     </footer>
+    <?php
+        include 'connect.php';
+        if (!empty($_POST['date']) && !empty($_POST['title']) && !empty($_POST['about']) && !empty($_POST['content']) && !empty($_POST['slika']) && !empty($_POST['category'])) {
+            $datum = $_POST['date'];
+            $naslov = $_POST['title'];
+            $sazetak = $_POST['about'];
+            $tekst = $_POST['content'];
+            $slika = $_POST['slika'];
+            $kategorija = $_POST['category'];
+            if (isset($_POST['archive'])) $arhiva = 1;
+            else $arhiva = 0;
+            echo "$datum<br>";
+            echo "$naslov<br>";
+            echo "$sazetak<br>";
+            echo "$tekst<br>";
+            echo "$slika<br>";
+            echo "<img src='$slika' alt=''>";
+            echo "$kategorija<br>";
+            echo "$arhiva<br>";
+            $query = "INSERT INTO vijesti (datum, naslov, sazetak, tekst, slika, kategorija, arhiva) VALUES ('$datum', '$naslov', '$sazetak', '$tekst', '$slika', '$kategorija', '$arhiva')";
+            $result = mysqli_query($dbc, $query) or die('Error querying database.');
+        }
+        // $query = "SELECT * FROM vijesti";
+        // $result = mysqli_query($dbc, $query);
+        // while ($row = mysqli_fetch_array($result)) {
+        //     echo "${row['id']} ";
+        //     echo date('d/m/o', strtotime($row['datum'])) . " ";
+        //     echo "${row['naslov']} ";
+        //     echo "${row['sazetak']} ";
+        //     echo "${row['tekst']} ";
+        //     echo "${row['slika']} ";
+        //     echo "<img src='${row['slika']}' alt='slika' width='100px'>";
+        //     $s = "photos/" . $row['slika'];
+        //     echo "<img src='$s' alt='slika' width='100px'>";
+        //     echo "<img src='${row['slika']}' alt='slika' width='100px'>";
+        //     echo "${row['kategorija']} ";
+        //     echo "${row['arhiva']}<br>";
+        // }
+        mysqli_close($dbc);
+    ?>
 </body>
 </html>

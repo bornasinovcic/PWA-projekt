@@ -1,9 +1,16 @@
 <?php
-    $category = $_POST['category'];
-    $title = $_POST['title'];
-    $img = $_POST['slika'];
-    $about = $_POST['about'];
-    $content = $_POST['content'];
+    $datum = $_POST['date'];
+    $naslov = $_POST['title'];
+    $sazetak = $_POST['about'];
+    $tekst = $_POST['content'];
+    $slika = $_POST['slika'];
+    $kategorija = $_POST['category'];
+    $arhiva = $_POST['title'];
+    if (isset($_POST['archive'])) {
+        $arhiva = 1;
+    } else {
+        $arhiva = 0;
+    }
 ?>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -31,7 +38,7 @@
     <div class="container bg-white text-center">
         <div class="row">
             <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-12 fs-5 fw-bold">
-                <a href="./index.html">
+                <a href="./index.php">
                     <div class="m-2">
                         Home
                     </div>
@@ -59,7 +66,7 @@
                 </a>
             </div>
             <div class="col-xxl-3 col-xl-12 col-lg-12 col-md-12 col-sm-12 fs-5 fw-bold">
-                <a href="./unos.html">
+                <a href="./unos.php">
                     <div class="m-2">
                         Unos
                     </div>
@@ -72,19 +79,22 @@
             <div class="row">
                 <div class="col">
                     <div class="row">
-                        <p class="category text-decoration-underline"><?php echo $category;?></p>
-                        <h1><?php echo $title;?></h1>
+                        <p class="category text-decoration-underline"><?php echo $kategorija;?></p>
+                        <h1><?php echo $naslov;?></h1>
                         <p>AUTOR:</p>
-                        <p>OBJAVLJENO:</p>
+                        <p>
+                            OBJAVLJENO:
+                            <?php echo date('d/m/o', strtotime($datum));?>
+                        </p>
                     </div>
                     <section class="slika">
-                        <?php echo "<img src='photos/$img'";?>
+                        <?php echo "<img src='photos/$slika'";?>
                     </section>
                     <section class="about">
-                        <p><?php echo $about;?></p>
+                        <p><?php echo $sazetak;?></p>
                     </section>
                     <section class="sadrzaj">
-                        <p><?php echo $content;?></p>
+                        <p><?php echo $tekst;?></p>
                     </section>
                 </div>
             </div>
