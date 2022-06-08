@@ -65,7 +65,7 @@
             <div class="row">
                 <div class="col d-flex justify-content-center m-4">
                     <!-- action="./skripta.php" -->
-                        <form method="post" class="p-4 bg-white"> 
+                    <form method="post" class="p-4 bg-white"> 
                         <div class="form-item">
                             <label>Naslov vijesti</label>
                             <div class="form-field">
