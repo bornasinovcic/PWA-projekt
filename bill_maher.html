@@ -24,7 +24,7 @@
     <div class="container bg-white text-center">
         <div class="row">
             <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-12 fs-5 fw-bold">
-                <a href="./index.html">
+                <a href="./index.php">
                     <div class="m-2">
                         Home
                     </div>
