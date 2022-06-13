@@ -1,8 +1,12 @@
 <?php
-    include 'connect.php'
+    include 'connect.php';
+    $id = $_GET['id'];
+    $query = "SELECT * FROM vijesti WHERE id = $id";
+    $result = mysqli_query($dbc, $query);
+    $row = mysqli_fetch_array($result);
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zxx">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -63,62 +67,30 @@
             </div>
         </div>
     </div>
-    <article>
+    <section>
         <div class="container bg-white mt-1">
             <div class="row">
                 <div class="col fs-5 fw-bold text-danger mb-1 mt-1">
-                    U.S.
+                    <?php echo "${row['kategorija']}"?></h2>
                 </div>
-            </div>
-        </div>
-        <div class="container bg-white">
-            <div class="row text-center">
-                <?php
-                    $query = "SELECT * FROM vijesti";
-                    $result = mysqli_query($dbc, $query);
-                    while ($row = mysqli_fetch_array($result)) {
-                        if (strcmp($row['kategorija'], "U.S.") === 0) {
-                            echo "
-                                <div class='col-xxl-4 col-sm-12'>
-                                    <a href='./clanak.php?id=${row['id']}'>
-                                        <img src='./photos/${row['slika']}' alt='${row['slika']}'>
-                                        <h4>${row['naslov']}</h4>
-                                    </a>
-                                </div>
-                            ";
-                        }
-                    }
-                ?>
             </div>
         </div>
         <div class="container bg-white">
             <div class="row">
-                <div class="col fs-5 fw-bold text-danger mb-1 mt-1">
-                    World
+                <div class="col">
+                    <h2><?php echo "${row['naslov']}"?></h2>
+                    <p><?php echo date('d/m/o', strtotime($row['datum']))?></p>
+                    <?php echo "<img src='./photos/${row['slika']}' alt='${row['slika']}'>"?>
+                    <div class="text-white mt-3 mb-3 p-2 subtitle">
+                        <?php echo "${row['kategorija']}"?></h2>
+                    </div>
+                    <p>
+                        <?php echo "${row['tekst']}"?>
+                    </p>
                 </div>
             </div>
         </div>
-        <div class="container bg-white">
-            <div class="row text-center">
-                <?php
-                    $query = "SELECT * FROM vijesti";
-                    $result = mysqli_query($dbc, $query);
-                    while ($row = mysqli_fetch_array($result)) {
-                        if (strcmp($row['kategorija'], "World") === 0) {
-                            echo "
-                                <div class='col-xxl-4 col-sm-12'>
-                                    <a href='./clanak.php?id=${row['id']}'>
-                                        <img src='./photos/${row['slika']}' alt='${row['slika']}'>
-                                        <h4>${row['naslov']}</h4>
-                                    </a>
-                                </div>
-                            ";
-                        }
-                    }
-                ?>
-            </div>
-        </div>
-    </article>
+    </section>
     <footer>
         <div class="container bg-white mt-1 p-4">
             <div class="row">
