@@ -67,12 +67,7 @@
                     <form method="post" class="p-4 bg-white m-2">
                         Unesite id od clanka koji zelite izbristati:
                         <br><input type="number" name="id" id="id"><hr>
-                        <input type="submit" value="Brisanje">
-                    </form>
-                    <form method="post" class="p-4 bg-white m-2">
-                        Unesite id od clanka koji zelite izbristati:
-                        <br><input type="number" name="id" id="id"><hr>
-                        <input type="submit" value="Brisanje">
+                        <input type="submit" value="Brisanje" name="brisanje">
                     </form>
                 </div>
             </div>
@@ -89,7 +84,11 @@
     </footer>
     <?php
         include 'connect.php';
-        
+        if (!empty($_POST['id'])) {
+            $id = $_POST['id'];
+            $query = "DELETE FROM vijesti WHERE id = $id";
+            $result = mysqli_query($dbc, $query);
+        }
         mysqli_close($dbc);
     ?>
 </body>
