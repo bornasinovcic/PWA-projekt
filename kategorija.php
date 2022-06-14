@@ -1,21 +1,12 @@
 <?php
     include 'connect.php';
-    if (!empty($_POST['date']) && !empty($_POST['title']) && !empty($_POST['about']) && !empty($_POST['content']) && !empty($_POST['slika']) && !empty($_POST['category'])) {
-        $datum = $_POST['date'];
-        $naslov = $_POST['title'];
-        $sazetak = $_POST['about'];
-        $tekst = $_POST['content'];
-        $slika = $_POST['slika'];
-        $kategorija = $_POST['category'];
-        if (isset($_POST['archive'])) $arhiva = 1;
-        else $arhiva = 0;
-        $query = "INSERT INTO vijesti (datum, naslov, sazetak, tekst, slika, kategorija, arhiva) VALUES ('$datum', '$naslov', '$sazetak', '$tekst', '$slika', '$kategorija', '$arhiva')";
-        $result = mysqli_query($dbc, $query) or die('Error querying database.');
-    }
-    mysqli_close($dbc);
+    $category = $_GET['category'];
+    $query = "SELECT * FROM vijesti WHERE kategorija = '$category'";
+    $result = mysqli_query($dbc, $query);
+    $row = mysqli_fetch_array($result);
 ?>
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -76,32 +67,37 @@
             </div>
         </div>
     </div>
-    <section role="main">
-        <div class="container">
+    <article>
+        <div class="container bg-white mt-1">
             <div class="row">
-                <div class="col">
-                    <div class="row">
-                        <p class="category text-decoration-underline"><?php echo $kategorija;?></p>
-                        <h1><?php echo $naslov;?></h1>
-                        <p>AUTOR:</p>
-                        <p>
-                            OBJAVLJENO:
-                            <?php echo date('d/m/o', strtotime($datum));?>
-                        </p>
-                    </div>
-                    <section class="slika">
-                        <?php echo "<img src='photos/$slika'";?>
-                    </section>
-                    <section class="about">
-                        <p><?php echo $sazetak;?></p>
-                    </section>
-                    <section class="sadrzaj">
-                        <p><?php echo $tekst;?></p>
-                    </section>
+                <div class="col fs-5 fw-bold text-danger mb-1 mt-1">
+                    <?php
+                        echo "$category";
+                    ?>
                 </div>
             </div>
         </div>
-    </section>
+        <div class="container bg-white">
+            <div class="row text-center">
+                <?php
+                    $query = "SELECT * FROM vijesti";
+                    $result = mysqli_query($dbc, $query);
+                    while ($row = mysqli_fetch_array($result)) {
+                        if (strcmp($row['kategorija'], $category) === 0 && $row['arhiva'] == 0) {
+                            echo "
+                                <div class='col-xxl-4 col-sm-12'>
+                                    <a href='./clanak.php?id=${row['id']}'>
+                                        <img src='./photos/${row['slika']}' alt='${row['slika']}'>
+                                        <h4>${row['naslov']}</h4>
+                                    </a>
+                                </div>
+                            ";
+                        }
+                    }
+                ?>
+            </div>
+        </div>
+    </article>
     <footer>
         <div class="container bg-white mt-1 p-4">
             <div class="row">
@@ -111,5 +107,8 @@
             </div>
         </div>
     </footer>
+    <?php
+        mysqli_close($dbc);
+    ?>
 </body>
 </html>

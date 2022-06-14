@@ -38,14 +38,14 @@
                 </a>
             </div>
             <div class="col-xxl-2 col-xl-3 col-lg-4 col-md-6 col-sm-12 fs-5 fw-bold">
-                <a href="#U.S.">
+                <a href="./kategorija.php?category=U.S.">
                     <div class="m-2">
                         U.S.
                     </div>
                 </a>
             </div>
             <div class="col-xxl-2 col-xl-3 col-lg-4 col-md-12 col-sm-12 fs-5 fw-bold">
-                <a href="#World">
+                <a href="./kategorija.php?category=World">
                     <div class="m-2">
                         World
                     </div>

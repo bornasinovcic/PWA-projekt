@@ -34,14 +34,14 @@
                 </a>
             </div>
             <div class="col-xxl-2 col-xl-3 col-lg-4 col-md-6 col-sm-12 fs-5 fw-bold">
-                <a href="#U.S.">
+                <a href="./kategorija.php?category=U.S.">
                     <div class="m-2">
                         U.S.
                     </div>
                 </a>
             </div>
             <div class="col-xxl-2 col-xl-3 col-lg-4 col-md-12 col-sm-12 fs-5 fw-bold">
-                <a href="#World">
+                <a href="./kategorija.php?category=World">
                     <div class="m-2">
                         World
                     </div>
@@ -77,7 +77,7 @@
                     $query = "SELECT * FROM vijesti";
                     $result = mysqli_query($dbc, $query);
                     while ($row = mysqli_fetch_array($result)) {
-                        if (strcmp($row['kategorija'], "U.S.") === 0) {
+                        if (strcmp($row['kategorija'], "U.S.") === 0 && $row['arhiva'] == 1) {
                             echo "
                                 <div class='col-xxl-4 col-sm-12'>
                                     <a href='./clanak.php?id=${row['id']}'>
@@ -104,7 +104,7 @@
                     $query = "SELECT * FROM vijesti";
                     $result = mysqli_query($dbc, $query);
                     while ($row = mysqli_fetch_array($result)) {
-                        if (strcmp($row['kategorija'], "World") === 0) {
+                        if (strcmp($row['kategorija'], "World") === 0 && $row['arhiva'] == 1) {
                             echo "
                                 <div class='col-xxl-4 col-sm-12'>
                                     <a href='./clanak.php?id=${row['id']}'>
