@@ -45,7 +45,7 @@
                 </a>
             </div>
             <div class="col-xxl-2 col-xl-3 col-lg-12 col-md-12 col-sm-12 fs-5 fw-bold">
-                <a href="#Administracija">
+                <a href="./administracija.php">
                     <div class="m-2">
                         Administracija
                     </div>
@@ -64,7 +64,7 @@
         <div class="container text-center">
             <div class="row">
                 <div class="col d-flex justify-content-center m-4">
-                    <form action="./skripta.php" method="post" class="p-4 bg-white"> 
+                    <form action="./skripta.php" method="post" class="p-4 bg-white">
                         <div class="form-item">
                             <label>Naslov vijesti</label>
                             <div class="form-field">

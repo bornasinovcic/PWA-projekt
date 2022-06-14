@@ -52,7 +52,7 @@
                 </a>
             </div>
             <div class="col-xxl-2 col-xl-3 col-lg-12 col-md-12 col-sm-12 fs-5 fw-bold">
-                <a href="#Administracija">
+                <a href="./administracija.php">
                     <div class="m-2">
                         Administracija
                     </div>

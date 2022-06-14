@@ -1,10 +1,3 @@
-<?php
-    include 'connect.php';
-    $id = $_GET['id'];
-    $query = "SELECT * FROM vijesti WHERE id = $id";
-    $result = mysqli_query($dbc, $query);
-    $row = mysqli_fetch_array($result);
-?>
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
@@ -67,30 +60,24 @@
             </div>
         </div>
     </div>
-    <section>
-        <div class="container bg-white mt-1">
+    <main>
+        <div class="container text-center">
             <div class="row">
-                <div class="col fs-5 fw-bold text-danger mb-1 mt-1">
-                    <?php echo "${row['kategorija']}"?></h2>
+                <div class="col d-flex justify-content-center m-4">
+                    <form method="post" class="p-4 bg-white m-2">
+                        Unesite id od clanka koji zelite izbristati:
+                        <br><input type="number" name="id" id="id"><hr>
+                        <input type="submit" value="Brisanje">
+                    </form>
+                    <form method="post" class="p-4 bg-white m-2">
+                        Unesite id od clanka koji zelite izbristati:
+                        <br><input type="number" name="id" id="id"><hr>
+                        <input type="submit" value="Brisanje">
+                    </form>
                 </div>
             </div>
         </div>
-        <div class="container bg-white">
-            <div class="row">
-                <div class="col">
-                    <h2><?php echo "${row['naslov']}"?></h2>
-                    <p><?php echo date('d/m/o', strtotime($row['datum']))?></p>
-                    <?php echo "<img src='./photos/${row['slika']}' alt='${row['slika']}'>"?>
-                    <div class="text-white mt-3 mb-3 p-2 subtitle">
-                        <?php echo "${row['kategorija']}"?></h2>
-                    </div>
-                    <p>
-                        <?php echo "${row['tekst']}"?>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
+    </main>
     <footer>
         <div class="container bg-white mt-1 p-4">
             <div class="row">
@@ -101,6 +88,8 @@
         </div>
     </footer>
     <?php
+        include 'connect.php';
+        
         mysqli_close($dbc);
     ?>
 </body>
