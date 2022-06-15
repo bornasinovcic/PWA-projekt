@@ -63,11 +63,69 @@
     <main>
         <div class="container text-center">
             <div class="row">
-                <div class="col d-flex justify-content-center m-4">
-                    <form method="post" class="p-4 bg-white m-2">
-                        Unesite id od clanka koji zelite izbristati:
-                        <br><input type="number" name="id" id="id"><hr>
-                        <input type="submit" value="Brisanje" name="brisanje">
+                <div class="col d-flex flex-column justify-content-center m-4">
+                    <form method="post" class="bg-white p-4 mb-5">
+                        Unesite id od članka koji želite izbrisati
+                        <br><input type="number" name="id" id="id" required><hr>
+                        <button type="submit" value="Brisanje" name="gumb" class="bg-white">Brisanje</button>
+                    </form>
+                    <form method="post" class="bg-white p-4 mb-5">
+                        <div class="form-item">
+                            Unesite id od članka koji želite izmjeniti
+                            <br><input type="number" name="id" id="id" required>
+                        </div>
+                        <div class="form-item">
+                            <label>Naslov vijesti</label>
+                            <div class="form-field">
+                                <input type="text" name="title" class="form-field-textual" required>
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <label>Datum objave</label>
+                            <div class="form-field">
+                                <input type="date" name="date" id="date" required>
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <label>Kratki sadržaj vijesti (do 50 znakova)</label>
+                            <div class="form-field">
+                                <textarea name="about" cols="30" rows="8" required></textarea>
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <label>Sadržaj vijesti</label>
+                            <div class="form-field">
+                                <textarea name="content" cols="30" rows="8" class="form-field-textual" required></textarea>
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <label>Slika:</label>
+                            <div class="form-field">
+                                <input type="file" name="slika" required>
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <label>Kategorija vijesti</label>
+                            <div class="form-field">
+                                <select name="category" class="form-field-textual" required>
+                                    <option value="">Odabir kategorije</option>
+                                    <option value="U.S.">U.S.</option>
+                                    <option value="World">World</option>
+                                    <option value="Politics">Politics</option>
+                                    <option value="Sport">Sport</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <label>Spremiti u arhivu:</label>
+                            <div class="form-field">
+                                <input type="checkbox" name="archive">
+                            </div>
+                        </div><hr>
+                        <div class="form-item">
+                            <button type="reset" value="Poništi" name="gumb" class="bg-white">Brisanje</button>
+                            <button type="submit" value="Izmjena" name="gumb" class="bg-white">Izmjena</button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -84,10 +142,24 @@
     </footer>
     <?php
         include 'connect.php';
-        if (!empty($_POST['id'])) {
-            $id = $_POST['id'];
-            $query = "DELETE FROM vijesti WHERE id = $id";
-            $result = mysqli_query($dbc, $query);
+        if (isset($_POST['gumb'])) {
+            if (strcmp($_POST['gumb'], 'Brisanje') === 0) {
+                $id = $_POST['id'];
+                $query = "DELETE FROM vijesti WHERE id = $id";
+                $result = mysqli_query($dbc, $query);
+            } elseif (strcmp($_POST['gumb'], 'Izmjena') === 0) {
+                $id = $_POST['id'];
+                $datum = $_POST['date'];
+                $naslov = $_POST['title'];
+                $sazetak = $_POST['about'];
+                $tekst = $_POST['content'];
+                $slika = $_POST['slika'];
+                $kategorija = $_POST['category'];
+                if (isset($_POST['archive'])) $arhiva = 1;
+                else $arhiva = 0;
+                $query = "UPDATE vijesti SET datum = '$datum', naslov = '$naslov', sazetak = '$sazetak', tekst = '$tekst', slika = '$slika', kategorija = '$kategorija', arhiva = '$arhiva' WHERE id = $id";
+                $result = mysqli_query($dbc, $query);
+            }
         }
         mysqli_close($dbc);
     ?>

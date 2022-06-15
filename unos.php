@@ -112,7 +112,7 @@
                             <div class="form-field">
                                 <input type="checkbox" name="archive">
                             </div>
-                        </div>
+                        </div><hr>
                         <div class="form-item">
                             <button type="reset" value="Poništi" class="bg-white">Poništi</button>
                             <button type="submit" value="Prihvati" class="bg-white">Prihvati</button>
