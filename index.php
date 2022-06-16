@@ -20,6 +20,7 @@
             <div class="row">
                 <div class="col text-center text-white naslov">
                     <h1 class="display-1">Newsweek</h1>
+                    <h6 class="text-start"><?php echo date('D, M j, Y')?></h6>
                 </div>
             </div>
         </div>
@@ -55,7 +56,7 @@
                 </a>
             </div>
             <div class="col-xxl-3 col-xl-12 col-lg-12 col-md-12 col-sm-12 fs-5 fw-bold">
-                <a href="./unos.html">
+                <a href="./unos.php">
                     <div class="m-2">
                         Unos
                     </div>

@@ -17,6 +17,7 @@
             <div class="row">
                 <div class="col text-center text-white naslov">
                     <h1 class="display-1">Newsweek</h1>
+                    <h6 class="text-start"><?php echo date('D, M j, Y')?></h6>
                 </div>
             </div>
         </div>
@@ -52,7 +53,7 @@
                 </a>
             </div>
             <div class="col-xxl-3 col-xl-12 col-lg-12 col-md-12 col-sm-12 fs-5 fw-bold">
-                <a href="./unos.html">
+                <a href="./unos.php">
                     <div class="m-2">
                         Unos
                     </div>
@@ -69,7 +70,7 @@
                             <label>Naslov vijesti</label>
                             <div class="form-field">
                                 <input type="text" name="title" id="naslov" class="form-field-textual" required>
-                                <span id="poruka_za_naslov"></span><br>
+                                <span id="porukaNaslov"></span>
                             </div>
                         </div>
                         <div class="form-item">
@@ -81,31 +82,35 @@
                         <div class="form-item">
                             <label>Kratki sadržaj vijesti (do 50 znakova)</label>
                             <div class="form-field">
-                                <textarea name="about" cols="30" rows="8" required></textarea>
+                                <textarea name="about" cols="30" rows="8" id="shortend-content" required></textarea>
+                                <span id="porukaKratkiSardzaj"></span>
                             </div>
                         </div>
                         <div class="form-item">
                             <label>Sadržaj vijesti</label>
                             <div class="form-field">
-                                <textarea name="content" cols="30" rows="8" class="form-field-textual" required></textarea>
+                                <textarea id="content" name="content" cols="30" rows="8" class="form-field-textual" required></textarea>
+                                <span id="porukaSadrzaj"></span>
                             </div>
                         </div>
                         <div class="form-item">
                             <label>Slika:</label>
                             <div class="form-field">
                                 <input type="file" name="picture" id="picture" required>
+                                <span id="porukaSlika"></span>
                             </div>
                         </div>
                         <div class="form-item">
                             <label>Kategorija vijesti</label>
                             <div class="form-field">
-                                <select name="category" class="form-field-textual" required>
+                                <select name="category" class="form-field-textual" id="category" required>
                                     <option value="">Odabir kategorije</option>
                                     <option value="U.S.">U.S.</option>
                                     <option value="World">World</option>
                                     <option value="Politics">Politics</option>
                                     <option value="Sport">Sport</option>
                                 </select>
+                                <span id="porukaKategorija"></span>
                             </div>
                         </div>
                         <div class="form-item">
@@ -119,6 +124,73 @@
                             <button type="submit" value="Prihvati" class="bg-white" id="slanje">Prihvati</button>
                         </div>
                     </form>
+                    <script>
+                        document.getElementById("slanje").onclick = function(event) {
+                            var slanje = true;
+                            var naslov = document.getElementById("naslov").value;
+                            var polje_za_naslov = document.getElementById("naslov");
+                            // max length je 80, a ne 30 kako je zadano jer imam
+                            // naslova sa zadanih slika koji imaju više od 30 znakova
+                            if (naslov.length < 5 || naslov.length > 80) {
+                                slanje_forme = false;
+                                document.getElementById("porukaNaslov").innerHTML = "<br>Naslov mora imati više<br>od 5 i manje od 80 znakova";
+                                document.getElementById("porukaNaslov").style.color = "red";
+                                polje_za_naslov.style.border = "1px solid red";
+                            } else {
+                                document.getElementById("porukaNaslov").innerHTML = "";
+                                polje_za_naslov.style.border = "1px solid black";
+
+                            }
+                            var kratki_sardzaj = document.getElementById("shortend-content").value;
+                            var polje_za_kratki_sardzaj = document.getElementById("shortend-content");
+                            if (kratki_sardzaj.length < 10 || kratki_sardzaj.length > 100) {
+                                slanje_forme = false;
+                                document.getElementById("porukaKratkiSardzaj").innerHTML = "<br>Kratki sardzaj vijesti mora imati više<br>od 10 i manje od 100 znakova";
+                                document.getElementById("porukaKratkiSardzaj").style.color = "red";
+                                polje_za_kratki_sardzaj.style.border = "1px solid red";
+                            } else {
+                                document.getElementById("porukaKratkiSardzaj").innerHTML = "";
+                                polje_za_kratki_sardzaj.style.border = "1px solid black";
+                            }
+                            var tekst = document.getElementById("content").value;
+                            var polje_za_tekst = document.getElementById("content");
+                            if (tekst.length == 0) {
+                                slanje_forme = false;
+                                document.getElementById("porukaSadrzaj").innerHTML = "<br>Tekst vijesti nesmije biti prazan";
+                                document.getElementById("porukaSadrzaj").style.color = "red";
+                                polje_za_tekst.style.border = "1px solid red";
+                            } else {
+                                document.getElementById("porukaSadrzaj").innerHTML = "";
+                                polje_za_tekst.style.border = "1px solid black";
+                            }
+                            var slika = document.getElementById("picture").value;
+                            var polje_za_slika = document.getElementById("picture");
+                            if (slika) {
+                                document.getElementById("porukaSlika").innerHTML = "";
+                                polje_za_slika.style.border = "";
+                            } else {
+                                slanje_forme = false;
+                                document.getElementById("porukaSlika").innerHTML = "<br>Slika mora biti odabrana";
+                                document.getElementById("porukaSlika").style.color = "red";
+                                polje_za_slika.style.border = "1px solid red";
+                            }
+                            var kategorija = document.getElementById("category").value;
+                            var polje_za_kategorija = document.getElementById("category");
+                            if (kategorija) {
+                                document.getElementById("porukaKategorija").innerHTML = "";
+                                polje_za_kategorija.style.border = "1px solid black";
+                            } else {
+                                slanje_forme = false;
+                                document.getElementById("porukaKategorija").innerHTML = "<br>Kategorija mora biti odabrana";
+                                document.getElementById("porukaKategorija").style.color = "red";
+                                polje_za_kategorija.style.border = "1px solid red";
+                                
+                            }
+                            if (slanje != true) {
+                                event.preventDefault();
+                            }
+                        }
+                    </script>
                 </div>
             </div>
         </div>
