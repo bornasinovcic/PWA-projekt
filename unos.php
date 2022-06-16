@@ -1,3 +1,7 @@
+<?php
+    include 'connect.php';
+    mysqli_close($dbc);
+?>
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
