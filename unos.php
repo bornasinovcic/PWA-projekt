@@ -184,7 +184,6 @@
                                 document.getElementById("porukaKategorija").innerHTML = "<br>Kategorija mora biti odabrana";
                                 document.getElementById("porukaKategorija").style.color = "red";
                                 polje_za_kategorija.style.border = "1px solid red";
-                                
                             }
                             if (slanje != true) {
                                 event.preventDefault();
