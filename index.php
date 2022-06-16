@@ -81,7 +81,7 @@
                             echo "
                                 <div class='col-xxl-4 col-sm-12'>
                                     <a href='./clanak.php?id=${row['id']}'>
-                                        <img src='./photos/${row['slika']}' alt='${row['slika']}'>
+                                        <img src='./images/${row['slika']}' alt='${row['slika']}'>
                                         <h4>${row['naslov']}</h4>
                                     </a>
                                 </div>
@@ -108,7 +108,7 @@
                             echo "
                                 <div class='col-xxl-4 col-sm-12'>
                                     <a href='./clanak.php?id=${row['id']}'>
-                                        <img src='./photos/${row['slika']}' alt='${row['slika']}'>
+                                        <img src='./images/${row['slika']}' alt='${row['slika']}'>
                                         <h4>${row['naslov']}</h4>
                                     </a>
                                 </div>

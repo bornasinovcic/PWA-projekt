@@ -80,7 +80,7 @@
                 <div class="col">
                     <h2><?php echo "${row['naslov']}"?></h2>
                     <p><?php echo date('d/m/o', strtotime($row['datum']))?></p>
-                    <?php echo "<img src='./photos/${row['slika']}' alt='${row['slika']}'>"?>
+                    <?php echo "<img src='./images/${row['slika']}' alt='${row['slika']}'>"?>
                     <div class="text-white mt-3 mb-3 p-2 subtitle">
                         <?php echo "${row['kategorija']}"?></h2>
                     </div>

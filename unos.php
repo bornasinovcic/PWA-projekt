@@ -64,7 +64,7 @@
         <div class="container text-center">
             <div class="row">
                 <div class="col d-flex justify-content-center m-4">
-                    <form action="./skripta.php" method="post" class="p-4 bg-white">
+                    <form enctype="multipart/form-data" action="./skripta.php" method="post" class="p-4 bg-white">
                         <div class="form-item">
                             <label>Naslov vijesti</label>
                             <div class="form-field">
@@ -92,7 +92,7 @@
                         <div class="form-item">
                             <label>Slika:</label>
                             <div class="form-field">
-                                <input type="file" name="slika" required>
+                                <input type="file" name="picture" id="picture">
                             </div>
                         </div>
                         <div class="form-item">
