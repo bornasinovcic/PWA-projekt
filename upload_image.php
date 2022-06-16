@@ -12,13 +12,13 @@
         <input type="submit" value="submit" name="button">
     </form>
     <?php
-        if(!empty($_FILES["picture"]["name"])) {
+        if (!empty($_FILES["picture"]["name"])) {
             $target_file = "images/" . basename($_FILES["picture"]["name"]);
             $uploadOk = 1;
             $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-            if(isset($_POST["button"])) {
+            if (isset($_POST["button"])) {
                 $check = getimagesize($_FILES["picture"]["tmp_name"]);
-                if($check !== false) {
+                if ($check !== false) {
                     echo "File is an image - " . $check["mime"] . ".<br>";
                     $uploadOk = 1;
                 } else {
@@ -30,7 +30,7 @@
                 echo "Sorry, file already exists.<br>";
                 $uploadOk = 0;
             }
-            if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
+            if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
                 echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.<br>";
                 $uploadOk = 0;
             }
