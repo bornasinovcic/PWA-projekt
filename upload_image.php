@@ -43,6 +43,7 @@
                     echo "Sorry, there was an error uploading your file.<br>";
                 }
             }
+            echo "<img src='$target_file' alt='$target_file' width='300px'>"; 
         }
     ?>
 </body>
