@@ -52,7 +52,7 @@
                 </a>
             </div>
             <div class="col-xxl-3 col-xl-12 col-lg-12 col-md-12 col-sm-12 fs-5 fw-bold">
-                <a href="./unos.php">
+                <a href="./unos.html">
                     <div class="m-2">
                         Unos
                     </div>

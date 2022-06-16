@@ -1,7 +1,3 @@
-<?php
-    include 'connect.php';
-    mysqli_close($dbc);
-?>
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
@@ -56,7 +52,7 @@
                 </a>
             </div>
             <div class="col-xxl-3 col-xl-12 col-lg-12 col-md-12 col-sm-12 fs-5 fw-bold">
-                <a href="./unos.php">
+                <a href="./unos.html">
                     <div class="m-2">
                         Unos
                     </div>
@@ -72,7 +68,8 @@
                         <div class="form-item">
                             <label>Naslov vijesti</label>
                             <div class="form-field">
-                                <input type="text" name="title" class="form-field-textual" required>
+                                <input type="text" name="title" id="naslov" class="form-field-textual" required>
+                                <span id="poruka_za_naslov"></span><br>
                             </div>
                         </div>
                         <div class="form-item">
@@ -96,7 +93,7 @@
                         <div class="form-item">
                             <label>Slika:</label>
                             <div class="form-field">
-                                <input type="file" name="picture" id="picture">
+                                <input type="file" name="picture" id="picture" required>
                             </div>
                         </div>
                         <div class="form-item">
@@ -119,7 +116,7 @@
                         </div><hr>
                         <div class="form-item">
                             <button type="reset" value="Poništi" class="bg-white">Poništi</button>
-                            <button type="submit" value="Prihvati" class="bg-white">Prihvati</button>
+                            <button type="submit" value="Prihvati" class="bg-white" id="slanje">Prihvati</button>
                         </div>
                     </form>
                 </div>
