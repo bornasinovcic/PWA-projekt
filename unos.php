@@ -129,17 +129,14 @@
                             var slanje = true;
                             var naslov = document.getElementById("naslov").value;
                             var polje_za_naslov = document.getElementById("naslov");
-                            // max length je 80, a ne 30 kako je zadano jer imam
-                            // naslova sa zadanih slika koji imaju više od 30 znakova
-                            if (naslov.length < 5 || naslov.length > 80) {
+                            if (naslov.length < 5 || naslov.length > 30) {
                                 slanje_forme = false;
-                                document.getElementById("porukaNaslov").innerHTML = "<br>Naslov mora imati više<br>od 5 i manje od 80 znakova";
+                                document.getElementById("porukaNaslov").innerHTML = "<br>Naslov mora imati više<br>od 5 i manje od 30 znakova";
                                 document.getElementById("porukaNaslov").style.color = "red";
                                 polje_za_naslov.style.border = "1px solid red";
                             } else {
                                 document.getElementById("porukaNaslov").innerHTML = "";
                                 polje_za_naslov.style.border = "1px solid black";
-
                             }
                             var kratki_sardzaj = document.getElementById("shortend-content").value;
                             var polje_za_kratki_sardzaj = document.getElementById("shortend-content");

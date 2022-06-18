@@ -51,9 +51,13 @@
         else $arhiva = 0;
         $query = "
             INSERT INTO vijesti (datum, naslov, sazetak, tekst, slika, kategorija, arhiva)
-            VALUES ('$datum', '$naslov', '$sazetak', '$tekst', '$slika', '$kategorija', '$arhiva')
+            VALUES (?, ?, ?, ?, ?, ?, ?)
         ";
-        $result = mysqli_query($dbc, $query) or die('Error querying database.');
+        $stmt = mysqli_stmt_init($dbc);
+        if (mysqli_stmt_prepare($stmt, $query)) {
+            mysqli_stmt_bind_param($stmt, 'ssssssi', $datum, $naslov, $sazetak, $tekst, $slika, $kategorija, $arhiva);
+            mysqli_stmt_execute($stmt);
+        }
     }
     mysqli_close($dbc);
 ?>

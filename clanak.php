@@ -1,9 +1,16 @@
 <?php
     include 'connect.php';
     $id = $_GET['id'];
-    $query = "SELECT * FROM vijesti WHERE id = $id";
-    $result = mysqli_query($dbc, $query);
-    $row = mysqli_fetch_array($result);
+    $query = "SELECT * FROM vijesti WHERE id = ?;";
+    $stmt = mysqli_stmt_init($dbc);
+    if (!mysqli_stmt_prepare($stmt, $query)) {
+        echo "failed";
+    } else {
+        mysqli_stmt_bind_param($stmt, "i", $id);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        $row = mysqli_fetch_assoc($result);
+    }
 ?>
 <!DOCTYPE html>
 <html lang="zxx">

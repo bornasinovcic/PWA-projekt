@@ -1,5 +1,5 @@
 <?php
-    include 'connect.php'
+    include 'connect.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -75,10 +75,17 @@
         <div class="container bg-white">
             <div class="row text-center">
                 <?php
-                    $query = "SELECT * FROM vijesti";
-                    $result = mysqli_query($dbc, $query);
-                    while ($row = mysqli_fetch_array($result)) {
-                        if (strcmp($row['kategorija'], "U.S.") === 0 && $row['arhiva'] == 1) {
+                    $arhiva = 1;
+                    $category = "U.S.";
+                    $query = "SELECT * FROM vijesti WHERE kategorija = ? AND arhiva = ?;";
+                    $stmt = mysqli_stmt_init($dbc);
+                    if (!mysqli_stmt_prepare($stmt, $query)) {
+                        echo "failed";
+                    } else {
+                        mysqli_stmt_bind_param($stmt, "si", $category, $arhiva);
+                        mysqli_stmt_execute($stmt);
+                        $result = mysqli_stmt_get_result($stmt);
+                        while ($row = mysqli_fetch_assoc($result)) {
                             echo "
                                 <div class='col-xxl-4 col-sm-12'>
                                     <a href='./clanak.php?id=${row['id']}'>
@@ -102,10 +109,17 @@
         <div class="container bg-white">
             <div class="row text-center">
                 <?php
-                    $query = "SELECT * FROM vijesti";
-                    $result = mysqli_query($dbc, $query);
-                    while ($row = mysqli_fetch_array($result)) {
-                        if (strcmp($row['kategorija'], "World") === 0 && $row['arhiva'] == 1) {
+                    $arhiva = 1;
+                    $category = "World";
+                    $query = "SELECT * FROM vijesti WHERE kategorija = ? AND arhiva = ?;";
+                    $stmt = mysqli_stmt_init($dbc);
+                    if (!mysqli_stmt_prepare($stmt, $query)) {
+                        echo "failed";
+                    } else {
+                        mysqli_stmt_bind_param($stmt, "si", $category, $arhiva);
+                        mysqli_stmt_execute($stmt);
+                        $result = mysqli_stmt_get_result($stmt);
+                        while ($row = mysqli_fetch_assoc($result)) {
                             echo "
                                 <div class='col-xxl-4 col-sm-12'>
                                     <a href='./clanak.php?id=${row['id']}'>

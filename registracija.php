@@ -66,11 +66,11 @@
             <div class="row">
                 <div class="col d-flex justify-content-center m-4">
                     <form method="post" class="p-4 bg-white">
-                        Ime:<br><input type="text" name="ime" id="ime"><br>
-                        Prezime:<br><input type="text" name="prezime" id="prezime"><br>
-                        Korisničko ime:<br><input type="text" name="korisnicko_ime" id="korisnicko_ime"><br>
-                        Lozinka:<br><input type="password" name="lozinka" id="lozinka"><br>
-                        Ponovite lozinku:<br><input type="password" name="lozinka_ponovo" id="lozinka_ponovo"><hr>
+                        Ime:<br><input type="text" name="ime" id="ime" required><br>
+                        Prezime:<br><input type="text" name="prezime" id="prezime" required><br>
+                        Korisničko ime:<br><input type="text" name="korisnicko_ime" id="korisnicko_ime" required><br>
+                        Lozinka:<br><input type="password" name="lozinka" id="lozinka" required><br>
+                        Ponovite lozinku:<br><input type="password" name="lozinka_ponovo" id="lozinka_ponovo" required><hr>
                         <span id="lozinkaPoruka"></span>
                         <button type="reset" value="reset" name="gumb" class="bg-white">Reset</button>
                         <button type="submit" value="submit" name="gumb" class="bg-white" id="submit">Submit</button>
