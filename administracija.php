@@ -179,7 +179,6 @@
                                 </div>
                             </div>
                         ";
-                        
                     }
                 }
             }
@@ -200,8 +199,15 @@
         if (isset($_POST['gumb'])) {
             if (strcmp($_POST['gumb'], 'Brisanje') === 0) {
                 $id = $_POST['id'];
-                $query = 'DELETE FROM vijesti WHERE id = $id';
-                $result = mysqli_query($dbc, $query);
+                $query = 'DELETE FROM vijesti WHERE id = ?;';
+                $stmt = mysqli_stmt_init($dbc);
+                if (!mysqli_stmt_prepare($stmt, $query)) {
+                    echo "failed";
+                } else {
+                    mysqli_stmt_bind_param($stmt, "i", $id);
+                    mysqli_stmt_execute($stmt);
+                    $result = mysqli_stmt_get_result($stmt);
+                }            
             } elseif (strcmp($_POST['gumb'], 'Izmjena') === 0) {
                 $id = $_POST['id'];
                 $datum = $_POST['date'];
@@ -212,17 +218,12 @@
                 $kategorija = $_POST['category'];
                 if (isset($_POST['archive'])) $arhiva = 1;
                 else $arhiva = 0;
-                $query = '
-                    UPDATE vijesti
-                    SET datum = $datum,
-                        naslov = $naslov,
-                        sazetak = $sazetak,
-                        tekst = $tekst,
-                        slika = $slika,
-                        kategorija = $kategorija,
-                        arhiva = $arhiva
-                    WHERE id = $id';
-                $result = mysqli_query($dbc, $query);
+                $query = 'UPDATE vijesti SET datum = ?, naslov = ?, sazetak = ?, tekst = ?, slika = ?, kategorija = ?, arhiva = ? WHERE id = ?';
+                $stmt = mysqli_stmt_init($dbc);
+                if (mysqli_stmt_prepare($stmt, $query)) {
+                    mysqli_stmt_bind_param($stmt, 'ssssssii', $datum, $naslov, $sazetak, $tekst, $slika, $kategorija, $arhiva, $id);
+                    mysqli_stmt_execute($stmt);
+                }
             }
         }
         mysqli_close($dbc);
