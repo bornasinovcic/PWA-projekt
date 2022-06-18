@@ -49,10 +49,7 @@
         $kategorija = $_POST['category'];
         if (isset($_POST['archive'])) $arhiva = 1;
         else $arhiva = 0;
-        $query = "
-            INSERT INTO vijesti (datum, naslov, sazetak, tekst, slika, kategorija, arhiva)
-            VALUES (?, ?, ?, ?, ?, ?, ?)
-        ";
+        $query = "INSERT INTO vijesti (datum, naslov, sazetak, tekst, slika, kategorija, arhiva) VALUES (?, ?, ?, ?, ?, ?, ?);";
         $stmt = mysqli_stmt_init($dbc);
         if (mysqli_stmt_prepare($stmt, $query)) {
             mysqli_stmt_bind_param($stmt, 'ssssssi', $datum, $naslov, $sazetak, $tekst, $slika, $kategorija, $arhiva);
