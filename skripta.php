@@ -32,7 +32,15 @@
             }
         }
     }
-    if (!empty($_POST['date']) && !empty($_POST['title']) && !empty($_POST['about']) && !empty($_POST['content']) && !empty($_FILES["picture"]["name"]) && !empty($_POST['category'])) {
+    if (
+        !empty($_POST['date']) &&
+        !empty($_POST['title']) &&
+        !empty($_POST['about']) &&
+        !empty($_POST['content']) &&
+        !empty($_FILES["picture"]["name"]) &&
+        !empty($_POST['category'])
+    )
+    {
         $datum = $_POST['date'];
         $naslov = $_POST['title'];
         $sazetak = $_POST['about'];
@@ -41,7 +49,10 @@
         $kategorija = $_POST['category'];
         if (isset($_POST['archive'])) $arhiva = 1;
         else $arhiva = 0;
-        $query = "INSERT INTO vijesti (datum, naslov, sazetak, tekst, slika, kategorija, arhiva) VALUES ('$datum', '$naslov', '$sazetak', '$tekst', '$slika', '$kategorija', '$arhiva')";
+        $query = "
+            INSERT INTO vijesti (datum, naslov, sazetak, tekst, slika, kategorija, arhiva)
+            VALUES ('$datum', '$naslov', '$sazetak', '$tekst', '$slika', '$kategorija', '$arhiva')
+        ";
         $result = mysqli_query($dbc, $query) or die('Error querying database.');
     }
     mysqli_close($dbc);

@@ -65,6 +65,7 @@
         <div class="container text-center">
             <div class="row">
                 <div class="col d-flex flex-column justify-content-center m-4">
+                    <a href="./registracija.php">Registrirajte se</a>
                     <form method="post" class="bg-white p-4 mb-5">
                         Unesite id od članka koji želite izbrisati
                         <br><input type="number" name="id" id="id" required><hr>
