@@ -2,9 +2,9 @@
     [+] potrebno je u bazi podataka napraviti tablicu naziva korisnik koja mora sadržavati atribute id, ime, prezime, korisničko ime, lozinka, razina
     [+] dobra je praksa ograniciti ponavljanje naziva korisničkih imena (staviti unique) 
 
-[] potrebno zaštititi pristup dijelu stranice za administraciju administrator.php iz 3. faze uvođenjem provjere korisničkog imena i lozinke
-    [] ukoliko su uneseni ispravno korisničko ime i lozinka te korisnik ima administratorska prava treba korisniku prikazati administracijsku stranicu
-    [] ukoliko je uneseno ispravno korisničko ime i lozinka te korisnik nema administratorska prava treba korisniku prikazati poruku s njegovim imenom
+[+] potrebno zaštititi pristup dijelu stranice za administraciju administrator.php iz 3. faze uvođenjem provjere korisničkog imena i lozinke
+    [+] ukoliko su uneseni ispravno korisničko ime i lozinka te korisnik ima administratorska prava treba korisniku prikazati administracijsku stranicu
+    [+] ukoliko je uneseno ispravno korisničko ime i lozinka te korisnik nema administratorska prava treba korisniku prikazati poruku s njegovim imenom
         i upozorenjem da nema pravo za pristup administratorskoj stranici
     [] Ukoliko nije uneseno ispravno korisničko ime i/ili lozinka potrebno je korisniku izbaciti poruku da se mora prvo registrirati
         i prikazati link na formu za registraciju
@@ -14,11 +14,11 @@
         [+] lozinka se treba hashirati { password_hash(), password_verify() }
         [+] atribut razina je po defaultu na nuli (samo admin to mijenja u bazi po svojoj volji)
 
-[] nakon što to napravite potrebno je testirati ranjivost web aplikacije na SQL injection, te ispraviti tu ranjivost korištenjem PHP prepared statementa
+[+] nakon što to napravite potrebno je testirati ranjivost web aplikacije na SQL injection, te ispraviti tu ranjivost korištenjem PHP prepared statementa
 
-[] potrebno je kreirati stranicu za login naziva koja se sastoji od jednostavne forme s 2 tekstualna polja za unos korisničkog imena i lozinke
-    [] stranica za prijavu može biti samostalna ili se nalaziti unutar stranice administracija.php
+[+] potrebno je kreirati stranicu za login naziva koja se sastoji od jednostavne forme s 2 tekstualna polja za unos korisničkog imena i lozinke
+    [+] stranica za prijavu može biti samostalna ili se nalaziti unutar stranice administracija.php
         [] ukoliko se nalazi unutar stranice administracija.php, mora biti vidljiva samo ako korisnik nije registriran
         [] Ako je registriran onda je vidljiva forma za administraciju
 
-[] na sve sql upite staviti prepared statement
+[+] na sve sql upite staviti prepared statement

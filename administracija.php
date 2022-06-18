@@ -65,17 +65,23 @@
         <div class="container text-center">
             <div class="row">
                 <div class="col d-flex justify-content-center m-4">
-                    <form method="post" class="p-4 bg-white">
-                        Korisnicko ime:<br><input type="text" name="korisnicko_ime" id="korisnicko_ime" required><br>
-                        Lozinka:<br><input type="password" name="lozinka" id="lozinka" required><hr>
-                        <button type='submit' value='login' name='gumb' class='bg-white'>Sign in</button>
-                    </form>
+                    <?php
+                        if (session_id() == '') {
+                            echo "
+                                <form method='post' class='p-4 bg-white'>
+                                    Korisnicko ime:<br><input type='text' name='korisnicko_ime' id='korisnicko_ime' required><br>
+                                    Lozinka:<br><input type='password' name='lozinka' id='lozinka' required><hr>
+                                    <button type='submit' value='login' name='gumb' class='bg-white'>Sign in</button>
+                                </form>
+                            ";
+                        }
+                    ?>
                 </div>
             </div>
         </div>
         <?php
             include 'connect.php';
-            $login = FALSE;
+            $registracija = TRUE;
             if (isset($_POST['gumb'])) {
                 if (strcmp($_POST['gumb'], 'login') === 0) {
                     $korisnicko_ime = $_POST['korisnicko_ime'];
@@ -91,11 +97,39 @@
                         $row = mysqli_fetch_assoc($result);
                         if (isset($row['lozinka'])) {
                             if (password_verify($lozinka, $row['lozinka'])) {
-                                $login = TRUE;
+                                if ($row['razina'] === 1) {
+                                    $registracija = FALSE;
+                                    session_start();
+                                    $_SESSION['korisnicko_ime'] = $row['korisnicko_ime'];
+                                    $_SESSION['razina'] = $row['razina'];
+                                    echo "
+                                        <div class='container text-center'>
+                                            <div class='row'>
+                                                <div class='col d-flex flex-column justify-content-center m-4'>
+                                                    <p>Prijavljeni ste kao administrator ${_SESSION['korisnicko_ime']} i imate pravo pristupa admistracijskoj stranici.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ";
+                                } else {
+                                    $registracija = FALSE;
+                                    session_start();
+                                    $_SESSION['korisnicko_ime'] = $row['korisnicko_ime'];
+                                    $_SESSION['razina'] = $row['razina'];
+                                    echo "
+                                        <div class='container text-center'>
+                                            <div class='row'>
+                                                <div class='col d-flex flex-column justify-content-center m-4'>
+                                                    <p>Prijavljeni ste kao korisnik ${_SESSION['korisnicko_ime']} i nemate pravo pristupa admistracijskoj stranici.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ";
+                                }
                             }
                         }
                     }
-                    if ($login) {
+                    if (session_id() != '' && $_SESSION['razina'] === 1) {
                         echo "
                             <div class='container text-center'>
                                 <div class='row'>
@@ -167,13 +201,14 @@
                                 </div>
                             </div>
                         ";
-                    } else {
+                    } elseif ($registracija) {
                         echo "
                             <div class='container text-center'>
                                 <div class='row'>
                                     <div class='col d-flex justify-content-center m-4'>
                                         <form method='post' class='p-4 bg-white'>
                                             <button type='submit' class='bg-white'><a href='./registracija.php'>Registrirajte se</a></button>
+                                            ${_SESSION['razina']}
                                         </form>
                                     </div>
                                 </div>
