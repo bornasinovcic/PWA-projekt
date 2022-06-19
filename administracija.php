@@ -128,11 +128,13 @@
                         $admin = FALSE;
                         if (isset($_POST['korisnicko_ime'], $_POST['lozinka'])) {
                             $_SESSION['$username'] = $_POST['korisnicko_ime'];
+                            // user koji ne postoji ima najmanju razinu administarcije
+                            $_SESSION['$level'] = 2;
                             $_SESSION['$lozinka'] = $_POST['lozinka'];
                         }
                     }
                 }
-                if (($uspjesnaPrijava == TRUE && $admin == TRUE) || (isset($_SESSION['$username'])) && $_SESSION['$level'] == 1) {
+                if ($uspjesnaPrijava == TRUE && $admin == TRUE) {
                     echo "
                         <div class='container text-center'>
                             <div class='row'>
