@@ -60,7 +60,7 @@
                         <div class="form-item">
                             <label>Naslov vijesti</label>
                             <div class="form-field">
-                                <input type="text" name="title" id="naslov" class="form-field-textual" required>
+                                <input type="text" name="title" id="naslov" class="form-field-textual">
                                 <span id="porukaNaslov"></span>
                             </div>
                         </div>
@@ -73,28 +73,28 @@
                         <div class="form-item">
                             <label>Kratki sadržaj vijesti (do 50 znakova)</label>
                             <div class="form-field">
-                                <textarea name="about" cols="30" rows="8" id="shortend-content" required></textarea>
+                                <textarea name="about" cols="30" rows="8" id="shortend-content"></textarea>
                                 <span id="porukaKratkiSardzaj"></span>
                             </div>
                         </div>
                         <div class="form-item">
                             <label>Sadržaj vijesti</label>
                             <div class="form-field">
-                                <textarea id="content" name="content" cols="30" rows="8" class="form-field-textual" required></textarea>
+                                <textarea id="content" name="content" cols="30" rows="8" class="form-field-textual"></textarea>
                                 <span id="porukaSadrzaj"></span>
                             </div>
                         </div>
                         <div class="form-item">
                             <label>Slika:</label>
                             <div class="form-field">
-                                <input type="file" name="picture" id="picture" required>
+                                <input type="file" name="picture" id="picture">
                                 <span id="porukaSlika"></span>
                             </div>
                         </div>
                         <div class="form-item">
                             <label>Kategorija vijesti</label>
                             <div class="form-field">
-                                <select name="category" class="form-field-textual" id="category" required>
+                                <select name="category" class="form-field-textual" id="category">
                                     <option value="">Odabir kategorije</option>
                                     <option value="U.S.">U.S.</option>
                                     <option value="World">World</option>
@@ -117,7 +117,7 @@
                     </form>
                     <script>
                         document.getElementById("slanje").onclick = function(event) {
-                            var slanje = true;
+                            var slanje_forme = true;
                             var naslov = document.getElementById("naslov").value;
                             var polje_za_naslov = document.getElementById("naslov");
                             if (naslov.length < 5 || naslov.length > 30) {
@@ -173,7 +173,7 @@
                                 document.getElementById("porukaKategorija").style.color = "red";
                                 polje_za_kategorija.style.border = "1px solid red";
                             }
-                            if (slanje != true) {
+                            if (slanje_forme != true) {
                                 event.preventDefault();
                             }
                         }
