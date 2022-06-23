@@ -12,16 +12,7 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="row">
-                <div class="col text-center text-white naslov">
-                    <h1 class="display-1">Newsweek</h1>
-                    <h6 class="text-start"><?php echo date('D, M j, Y')?></h6>
-                </div>
-            </div>
-        </div>
-    </header>
+    <?php require_once 'header.php'?>
     <div class="container bg-white text-center">
         <div class="row">
             <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-12 fs-5 fw-bold">
@@ -191,14 +182,6 @@
             </div>
         </div>
     </main>
-    <footer>
-        <div class="container bg-white mt-1 p-4">
-            <div class="row">
-                <div class="col">
-                    &copy; 2022 NEWSWEEK
-                </div>
-            </div>
-        </div>
-    </footer>
+    <?php require_once 'footer.php'?>
 </body>
 </html>
