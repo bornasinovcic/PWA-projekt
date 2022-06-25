@@ -98,8 +98,6 @@
                                     <option value="">Odabir kategorije</option>
                                     <option value="U.S.">U.S.</option>
                                     <option value="World">World</option>
-                                    <option value="Politics">Politics</option>
-                                    <option value="Sport">Sport</option>
                                 </select>
                                 <span id="porukaKategorija"></span>
                             </div>

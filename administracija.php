@@ -186,8 +186,6 @@
                                                     <option value=''>Odabir kategorije</option>
                                                     <option value='U.S.'>U.S.</option>
                                                     <option value='World'>World</option>
-                                                    <option value='Politics'>Politics</option>
-                                                    <option value='Sport'>Sport</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -216,7 +214,7 @@
                             </div>
                         </div>
                     ";
-                } elseif (($uspjesnaPrijava == FALSE && $admin == FALSE)) {
+                } elseif (($uspjesnaPrijava == FALSE)) {
                     echo "
                         <div class='container text-center'>
                             <div class='row'>
