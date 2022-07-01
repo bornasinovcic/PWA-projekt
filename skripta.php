@@ -61,11 +61,11 @@
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
-    <?php require_once 'head.php'?>
+    <?php require_once 'head.html'?>
 </head>
 <body>
     <?php require_once 'header.php'?>
-    <?php require_once 'navigation.php'?>
+    <?php require_once 'navigation.html'?>
     <section role="main">
         <div class="container">
             <div class="row">
