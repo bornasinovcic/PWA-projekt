@@ -5,11 +5,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <?php require_once 'head.html'?>
+    <?php require_once '../html/head.html'?>
 </head>
 <body>
     <?php require_once 'header.php'?>
-    <?php require_once 'navigation.html'?>
+    <?php require_once '../html/navigation.html'?>
     <article>
         <div class="container bg-white mt-1">
             <div class="row">
@@ -35,7 +35,7 @@
                             echo "
                                 <div class='col-xxl-4 col-sm-12'>
                                     <a href='./clanak.php?id=${row['id']}'>
-                                        <img src='./images/${row['slika']}' alt='${row['slika']}' style='height: 260px;'>
+                                        <img src='../images/${row['slika']}' alt='${row['slika']}' style='height: 260px;'>
                                         <h4>${row['naslov']}</h4>
                                     </a>
                                 </div>
@@ -69,7 +69,7 @@
                             echo "
                                 <div class='col-xxl-4 col-sm-12'>
                                     <a href='./clanak.php?id=${row['id']}'>
-                                        <img src='./images/${row['slika']}' alt='${row['slika']}' style='height: 260px;'>
+                                        <img src='../images/${row['slika']}' alt='${row['slika']}' style='height: 260px;'>
                                         <h4>${row['naslov']}</h4>
                                     </a>
                                 </div>

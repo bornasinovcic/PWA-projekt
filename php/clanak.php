@@ -15,11 +15,11 @@
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
-    <?php require_once 'head.html'?>
+    <?php require_once '../html/head.html'?>
 </head>
 <body>
     <?php require_once 'header.php'?>
-    <?php require_once 'navigation.html'?>
+    <?php require_once '../html/navigation.html'?>
     <section>
         <div class="container bg-white mt-1">
             <div class="row">
@@ -33,7 +33,7 @@
                 <div class="col">
                     <h2><?php echo "${row['naslov']}"?></h2>
                     <p><?php echo date('d/m/o', strtotime($row['datum']))?></p>
-                    <?php echo "<img src='./images/${row['slika']}' alt='${row['slika']}'>"?>
+                    <?php echo "<img src='../images/${row['slika']}' alt='${row['slika']}'>"?>
                     <div class="text-white mt-3 mb-3 p-2 subtitle">
                         <?php echo "${row['kategorija']}"?></h2>
                     </div>

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <?php require_once 'head.html'?>
+    <?php require_once '../html/head.html'?>
 </head>
 <body>
     <?php require_once 'header.php'?>
-    <?php require_once 'navigation.html'?>
+    <?php require_once '../html/navigation.html'?>
     <article>
         <div class="container text-center">
             <div class="row">
