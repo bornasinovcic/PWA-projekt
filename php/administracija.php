@@ -212,7 +212,7 @@
                 }            
             } elseif (strcmp($_POST['gumb'], 'Izmjena') === 0) {
                 if (!empty($_FILES["slika"]["name"])) {
-                    $target_file = "images/" . basename($_FILES["slika"]["name"]);
+                    $target_file = "../images/" . basename($_FILES["slika"]["name"]);
                     $uploadOk = 1;
                     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
                     if (isset($_POST["gumb"])) {
