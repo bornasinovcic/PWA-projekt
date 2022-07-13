@@ -1,15 +1,15 @@
 <?php
     session_start();
-    include 'connect.php';
+    require 'connect.php';
 ?>
 <!DOCTYPE html>
 <html lang='zxx'>
 <head>
-    <?php require_once '../html/head.html'?>
+    <?php require '../html/head.html'?>
 </head>
 <body>
-    <?php require_once 'header.php'?>
-    <?php require_once '../html/navigation.html'?>
+    <?php require 'header.php'?>
+    <?php require '../html/navigation.html'?>
     <main>
         <div class="container text-center">
             <div class="row">
@@ -195,9 +195,9 @@
             mysqli_close($dbc);
         ?>
     </main>
-    <?php require_once 'footer.php'?>
+    <?php require 'footer.php'?>
     <?php
-        include 'connect.php';
+        require 'connect.php';
         if (isset($_POST['gumb'])) {
             if (strcmp($_POST['gumb'], 'Brisanje') === 0) {
                 $id = $_POST['id'];

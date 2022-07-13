@@ -38,3 +38,14 @@ button {
     border-radius: 10px;
     border: 2px solid red;
 }
+.parent {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.child {
+    width: 420px;
+}
+.child img {
+    height: 270px;
+}

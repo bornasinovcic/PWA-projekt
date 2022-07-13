@@ -1,5 +1,5 @@
 <?php
-    include 'connect.php';
+    require 'connect.php';
     $id = $_GET['id'];
     $query = "SELECT * FROM vijesti WHERE id = ?;";
     $stmt = mysqli_stmt_init($dbc);
@@ -15,11 +15,11 @@
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
-    <?php require_once '../html/head.html'?>
+    <?php require '../html/head.html'?>
 </head>
 <body>
-    <?php require_once 'header.php'?>
-    <?php require_once '../html/navigation.html'?>
+    <?php require 'header.php'?>
+    <?php require '../html/navigation.html'?>
     <section>
         <div class="container bg-white mt-1">
             <div class="row">
@@ -44,7 +44,7 @@
             </div>
         </div>
     </section>
-    <?php require_once 'footer.php'?>
+    <?php require 'footer.php'?>
     <?php
         mysqli_close($dbc);
     ?>

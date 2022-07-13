@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <?php require_once '../html/head.html'?>
+<?php require '../html/head.html'?>
 </head>
 <body>
-    <?php require_once 'header.php'?>
-    <?php require_once '../html/navigation.html'?>
+    <?php require 'header.php'?>
+    <?php require '../html/navigation.html'?>
     <article>
         <div class="container bg-white mt-1">
             <div class="row">
@@ -17,9 +17,9 @@
             </div>
         </div>
         <div class="container bg-white">
-            <div class="row text-center">
+            <div class="parent text-center">
                 <?php
-                    include 'connect.php';
+                    require 'connect.php';
                     $arhiva = 0;
                     $category = $_GET['category'];
                     $query = "SELECT * FROM vijesti WHERE kategorija = ? AND arhiva = ?;";
@@ -32,9 +32,9 @@
                         $result = mysqli_stmt_get_result($stmt);
                         while ($row = mysqli_fetch_assoc($result)) {
                             echo "
-                                <div class='col-xxl-4 col-sm-12'>
+                                <div class='child'>
                                     <a href='./clanak.php?id=${row['id']}'>
-                                        <img src='../images/${row['slika']}' alt='${row['slika']}' style='height: 260px;'>
+                                        <img src='../images/${row['slika']}' alt='${row['slika']}'>
                                         <h4>${row['naslov']}</h4>
                                     </a>
                                 </div>
@@ -46,6 +46,6 @@
             </div>
         </div>
     </article>
-    <?php require_once 'footer.php'?>
+    <?php require 'footer.php'?>
 </body>
 </html>

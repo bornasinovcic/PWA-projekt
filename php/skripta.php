@@ -1,5 +1,5 @@
 <?php
-    include 'connect.php';
+    require 'connect.php';
     if (!empty($_FILES["picture"]["name"])) {
         $target_file = "../images/" . basename($_FILES["picture"]["name"]);
         $uploadOk = 1;
@@ -61,11 +61,11 @@
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
-    <?php require_once '../html/head.html'?>
+    <?php require '../html/head.html'?>
 </head>
 <body>
-    <?php require_once 'header.php'?>
-    <?php require_once '../html/navigation.html'?>
+    <?php require 'header.php'?>
+    <?php require '../html/navigation.html'?>
     <section role="main">
         <div class="container">
             <div class="row">
@@ -92,6 +92,6 @@
             </div>
         </div>
     </section>
-    <?php require_once 'footer.php'?>
+    <?php require 'footer.php'?>
 </body>
 </html>

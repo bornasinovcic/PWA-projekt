@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <?php require_once '../html/head.html'?>
+    <?php require '../html/head.html'?>
 </head>
 <body>
-    <?php require_once 'header.php'?>
-    <?php require_once '../html/navigation.html'?>
+    <?php require 'header.php'?>
+    <?php require '../html/navigation.html'?>
     <article>
         <div class="container text-center">
             <div class="row">
@@ -21,7 +21,7 @@
                         <button type="submit" value="submit" name="gumb" class="bg-white" id="submit">Submit</button>
                     </form>
                     <?php
-                        include 'connect.php';
+                        require 'connect.php';
                         if (
                             !empty($_POST['ime']) &&
                             !empty($_POST['prezime']) &&
@@ -75,6 +75,6 @@
             </div>
         </div>
     </article>
-    <?php require_once 'footer.php'?>
+    <?php require 'footer.php'?>
 </body>
 </html>
