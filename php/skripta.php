@@ -1,7 +1,7 @@
 <?php
     include 'connect.php';
     if (!empty($_FILES["picture"]["name"])) {
-        $target_file = "images/" . basename($_FILES["picture"]["name"]);
+        $target_file = "../images/" . basename($_FILES["picture"]["name"]);
         $uploadOk = 1;
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
         if (isset($_POST["button"])) {
@@ -80,7 +80,7 @@
                         </p>
                     </div>
                     <section class="slika">
-                        <?php echo "<img src='images/$slika'";?>
+                        <?php echo "<img src='../images/$slika'";?>
                     </section>
                     <section class="about">
                         <p><?php echo $sazetak;?></p>
