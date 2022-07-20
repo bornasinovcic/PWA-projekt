@@ -218,7 +218,6 @@
                     if (isset($_POST["gumb"])) {
                         $check = getimagesize($_FILES["slika"]["tmp_name"]);
                         if ($check !== false) {
-                            echo "File is an image - " . $check["mime"] . ".<br>";
                             $uploadOk = 1;
                         } else {
                             echo "File is not an image.<br>";

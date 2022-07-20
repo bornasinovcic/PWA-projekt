@@ -72,6 +72,6 @@
         </div>
     </main>
     <?php require 'footer.php'?>
-    <script src="../js/script.js"></script>
+    <script src="../js/unos.js"></script>
 </body>
 </html>
